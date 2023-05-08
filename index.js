@@ -33,18 +33,18 @@ const Post = mongoose.model("Post", schema);
 
 app.use(express.json());
 
-app.get("/api/getAll", async (req, res) => {
+app.get("/", async (req, res) => {
   const posts = await Post.find();
   res.json(posts);
 });
 
-app.post("/api/post", async (req, res) => {
+app.post("/post", async (req, res) => {
   const post = new Post(req.body);
   await post.save();
   res.json(post);
 });
 
-app.delete("/api/delete/:id", async (req, res) => {
+app.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const post = await Post.findByIdAndDelete(id);
@@ -59,7 +59,7 @@ app.delete("/api/delete/:id", async (req, res) => {
   }
 });
 
-app.patch("/api/patch/:id", async (req, res) => {
+app.patch("/patch/:id", async (req, res) => {
   const { id } = req.params;
   const updates = req.body;
   try {
