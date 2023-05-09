@@ -8,6 +8,11 @@
           "src": "/(.*)",
           "dest": "index.js"
         }
-      ]
+      ],
+      "api": {
+    "cors": {
+      "origin": "*"
+    }
+  }
   }
   
