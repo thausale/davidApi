@@ -10,8 +10,10 @@
       "src": "/api/(.*)",
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
       "dest": "/api/$1",
-      "cors": {
-        "origin": "*"
+        "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH",
+        "Access-Control-Allow-Headers": "Content-Type"
       }
     }
   ]
