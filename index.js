@@ -47,8 +47,10 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/post", async (req, res) => {
+  console.log("post route launching");
   const post = new Post(req.body);
   await post.save();
+  console.log(post);
   res.json(post);
 });
 
