@@ -11,11 +11,15 @@ const url = process.env.MONGODB_URL;
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-app.options("/post", (req, res) => {
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200);
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
 });
 
 mongoose
