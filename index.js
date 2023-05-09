@@ -35,7 +35,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   const posts = await Post.find();
-  res.json(posts);
+  res.json({ data: posts });
 });
 
 app.post("/post", async (req, res) => {
